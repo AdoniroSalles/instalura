@@ -24,6 +24,7 @@ export const TextStyleVariantsMap = {
 const TextBase = styled.span`
      ${(props) => TextStyleVariantsMap[props.variant]}
      ${propToStyle('textAlign')}
+     
 `
 
 //passa a tag html e os textos
