@@ -1,29 +1,65 @@
-// function Title(props){
-//   return <h1> {props.children} </h1>
-
-import Footer from "../src/components/commons/Footer";
-import Menu from "../src/components/commons/Menu";
-import Text from "../src/components/foundation/Text";
-import { Button } from "../src/components/commons/Button";
-import { Grid } from "../src/components/foundation/layout/Grid";
+/* eslint-disable react/react-in-jsx-scope */
+import React from 'react';
+import Footer from '../src/components/commons/Footer';
+import Menu from '../src/components/commons/Menu';
+import Text from '../src/components/foundation/Text';
+import { Button } from '../src/components/commons/Button';
+import { Grid } from '../src/components/foundation/layout/Grid';
+import { Box } from '../src/components/foundation/layout/Box';
+import Modal from '../src/components/commons/Modal';
 
 export default function Home() {
+  const [isModalOpen, setModalState] = React.useState(false); // renderiza o const
+
   return (
-    <div
-      style={{
-        flex: "1",
-        display: "flex",
-        flexWrap: "wrap",
-        flexDirection: "column",
-        justifyContent: "space-between",
-      }}
+    // eslint-disable-next-line react/react-in-jsx-scope
+    <Box
+      flex="1"
+      display="flex"
+      flexWrap="wrap"
+      flexDirection="column"
+      justifyContent="space-between"
+      backgroundImage="url(/images/bubbles.svg)"
+      backgroundRepeat="no-repeat"
+      backgroundPosition="bottom right"
     >
       <Menu />
-      <Grid.Container>
+
+      {/* {isModalOpen && <Modal />} */}
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => {
+          setModalState(false);
+        }}
+      >
+        {(propsDoModal) => (
+          <Box
+            backgroundColor="white"
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...propsDoModal}
+          >
+            <div>
+              Nosso Modal
+            </div>
+          </Box>
+        )}
+
+      </Modal>
+
+      <Grid.Container
+        marginTop={{
+          xs: '32px',
+          md: '75px',
+        }}
+      >
         <Grid.Row>
           <Grid.Col
-            offset={{ xs: 0, md: 1 }} //desloca uma coluna
-            value={{ xs: 12, md: 5 }} //vai ocupar 5 coluna
+            offset={{ xs: 0, md: 1 }} // desloca uma coluna
+            value={{ xs: 12, md: 5 }} // vai ocupar 5 coluna
+            display="flex"
+            alignItems="flex-start"
+            justifyContent="center"
+            flexDirection="column"
           >
             <Text
               variant="title"
@@ -31,8 +67,8 @@ export default function Home() {
               color="tertiary.main"
               // textAlign = "center"
               textAlign={{
-                xs: "center",
-                md: "left",
+                xs: 'center',
+                md: 'left',
               }}
             >
               Compartilhe momentos e conecte-se com amigos
@@ -42,8 +78,8 @@ export default function Home() {
               tag="p"
               color="tertiary.light"
               textAlign={{
-                xs: "center",
-                md: "left",
+                xs: 'center',
+                md: 'left',
               }}
             >
               Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -54,10 +90,14 @@ export default function Home() {
             <Button
               variant="primary.main"
               margin={{
-                xs: "auto",
-                md: "initial",
+                xs: 'auto',
+                md: 'initial',
               }}
               display="block"
+              onClick={() => {
+                // isModalOpen = true;
+                setModalState(!isModalOpen); // altera a mudança de estado
+              }}
             >
               Cadastrar
             </Button>
@@ -65,15 +105,15 @@ export default function Home() {
           <Grid.Col value={{ xs: 12, md: 6 }}>
             <img
               alt="Imagem de celular com páginas internas do projeto com o perfil do Cage"
-              style={{ display: "block", margin: "auto" }}
+              style={{ display: 'block', margin: 'auto' }}
               src="https://bootcamp-alura-01-git-modulo01.omariosouto.vercel.app/images/phones.png"
             />
           </Grid.Col>
         </Grid.Row>
       </Grid.Container>
 
-      <Footer />
-    </div>
+      <Footer name="Adoniro Salles " />
+    </Box>
   );
   // <Title>My page</Title>
 }

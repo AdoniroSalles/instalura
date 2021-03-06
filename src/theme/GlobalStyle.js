@@ -1,8 +1,8 @@
-import { fromPairs } from 'lodash'
-import { createGlobalStyle } from 'styled-components'
-import { normalize } from 'styled-normalize'
+import { normalize } from 'styled-normalize';
+import { createGlobalStyle } from 'styled-components';
 
-//css reset 
+// css reset
+// eslint-disable-next-line import/prefer-default-export
 export const GlobalStyle = createGlobalStyle` 
     * {
         box-sizing: border-box;
@@ -26,4 +26,4 @@ export const GlobalStyle = createGlobalStyle`
         display: flex;
         flex-direction: column;
     }
-`
+`;

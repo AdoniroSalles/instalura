@@ -1,37 +1,35 @@
-import { css } from "styled-components"
-import { breakpointsMedia } from "./breakpointsMedia"
+import { breakpointsMedia } from './breakpointsMedia';
 
-//deixa o texto com breakpoints 
+// deixa o texto com breakpoints
 export function propToStyle(propName) {
-     //pode ser string ou object
-     return function (props) {
-          const propValue = props[propName]
+  // pode ser string ou object
+  return function (props) {
+    const propValue = props[propName];
 
-          if (typeof propValue === 'string') {
-               return {
-                    [propName]: propValue
-               }
-          }
+    if (typeof propValue === 'string' || typeof propValue === 'number') {
+      return {
+        [propName]: propValue,
+      };
+    }
 
-          if (typeof propValue === 'object') {
-               return breakpointsMedia({
-                    xs: {
-                         [propName] : propValue.xs
-                    },
-                    sm: { 
-                         [propName] : propValue.sm
-                    },
-                    md: { 
-                         [propName] : propValue.md
-                    },
-                    lg: { 
-                         [propName] : propValue.lg
-                    },
-                    xl: { 
-                         [propName] : propValue.xl
-                    },
-               })
-          }
-     }
-
+    if (typeof propValue === 'object') {
+      return breakpointsMedia({
+        xs: {
+          [propName]: propValue.xs,
+        },
+        sm: {
+          [propName]: propValue.sm,
+        },
+        md: {
+          [propName]: propValue.md,
+        },
+        lg: {
+          [propName]: propValue.lg,
+        },
+        xl: {
+          [propName]: propValue.xl,
+        },
+      });
+    }
+  };
 }

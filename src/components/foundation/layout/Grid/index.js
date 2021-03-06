@@ -122,6 +122,12 @@ const Col = styled.div`
         : "",
     });
   }}
+
+  ${propToStyle('display')}
+  ${propToStyle('alignItems')}
+  ${propToStyle('justifyContent')}
+  ${propToStyle('flexDirection')}
+
 `;
 export const Grid = {
   Container,
