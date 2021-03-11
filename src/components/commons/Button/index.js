@@ -1,19 +1,18 @@
-import styled, { css } from 'styled-components'
-import get from 'lodash/get'
-import { TextStyleVariantsMap } from '../../foundation/Text'
-import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia'
-import { propToStyle } from '../../../theme/utils/propToStyle'
-
+import styled, { css } from 'styled-components';
+import get from 'lodash/get';
+import { TextStyleVariantsMap } from '../../foundation/Text';
+import { breakpointsMedia } from '../../../theme/utils/breakpointsMedia';
+import { propToStyle } from '../../../theme/utils/propToStyle';
 
 const ButtonGhost = css`
     background-color: transparent;
     color: ${(props) => get(props.theme, `colors.${props.variant}.color`)};
 
-`
+`;
 const ButtonDefault = css`
     color: ${(props) => get(props.theme, `colors.${props.variant}.contrastText`)};
     background-color: ${(props) => get(props.theme, `colors.${props.variant}.color`)};
-`
+`;
 export const Button = styled.button`
     border: 0;
     cursor: pointer;
@@ -24,30 +23,40 @@ export const Button = styled.button`
     transition : ${(props) => props.theme.transition};
 
     ${(props) => {
-        // console.log('Button',props.variant, props.theme, get(props.theme, `colors.${props.variant}.color`))
-        if (props.ghost) {
-            return ButtonGhost
-        }
-        return ButtonDefault
-    }}
+    // eslint-disable-next-line max-len
+    // console.log('Button',props.variant, props.theme, get(props.theme, `colors.${props.variant}.color`))
+    if (props.ghost) {
+      return ButtonGhost;
+    }
+    return ButtonDefault;
+  }}
     &:hover,
     &:focus {
         opacity: 0.5;
     }
 
     //media querys
-    ${breakpointsMedia({
-        xs: css`
+  ${breakpointsMedia({
+    xs: css`
          ${TextStyleVariantsMap.smallestException} 
         `,
-        md: css`
+    md: css`
         padding: 12px 43px;
          ${TextStyleVariantsMap.paragraph1} ;
-        `
-    })}
+        `,
+  })}
 
-    ${propToStyle('margin')}
-    ${propToStyle('display')}
+  &:disabled{
+    cursor: not-allowed;
+    opacity: .2;
+  }
+
+  ${({ fullWidth }) => fullWidth && css`
+    width: 100%;
+  `};
+
+  ${propToStyle('margin')}
+  ${propToStyle('display')}
 
     
-`
+`;

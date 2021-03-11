@@ -1,3 +1,4 @@
+/* eslint-disable func-names */
 import { breakpointsMedia } from './breakpointsMedia';
 
 // deixa o texto com breakpoints
