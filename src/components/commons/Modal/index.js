@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled, { createGlobalStyle, css } from 'styled-components';
 import { motion } from 'framer-motion';
 
 // SOLID
@@ -40,6 +40,12 @@ const ModalWrapper = styled.div`
   }}
 `;
 
+const LockScroll = createGlobalStyle`
+  body{
+    overflow: hidden
+  }
+`;
+
 // eslint-disable-next-line react/prop-types
 function Modal({ isOpen, onClose, children }) {
   return (
@@ -51,6 +57,7 @@ function Modal({ isOpen, onClose, children }) {
       }}
 
     >
+      { isOpen && <LockScroll />}
       <motion.div
         variants={{
           open: {
@@ -69,7 +76,7 @@ function Modal({ isOpen, onClose, children }) {
           flex: '1',
         }}
       >
-        { children({
+        {children({
           'data-modal-safe-area': true, // atribui essa propriedade como padrao no modal
         })}
       </motion.div>
