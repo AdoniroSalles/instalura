@@ -60,6 +60,7 @@ export default function Text({
     <TextBase
       as={tag}
       variant={variant}
+      // eslint-disable-next-line react/jsx-props-no-spreading
       {...props}
     >
       { children}
