@@ -4,7 +4,7 @@ import { breakpointsMedia } from './breakpointsMedia';
 // deixa o texto com breakpoints
 export function propToStyle(propName) {
   // pode ser string ou object
-  return function (props) {
+  return (props) => {
     const propValue = props[propName];
 
     if (typeof propValue === 'string' || typeof propValue === 'number') {
@@ -32,5 +32,7 @@ export function propToStyle(propName) {
         },
       });
     }
+
+    return {};
   };
 }
