@@ -23,7 +23,7 @@ const links = [
   },
 ];
 
-export default function Menu(onCadastrarClick) {
+export default function Menu({ onCadastrarClick }) {
   return (
     <MenuWrapper>
       <MenuWrapper.LeftSide>
