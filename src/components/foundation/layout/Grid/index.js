@@ -8,7 +8,7 @@ const Container = styled.div`
   padding-left: 28px;
   margin-right: auto;
   margin-left: auto;
-  max-width: initial;
+  max-width: 100%;
   ${breakpointsMedia({
     sm: css`
       max-width: 576px;
@@ -138,9 +138,12 @@ export const Grid = {
     margin-right: -16px;
     margin-left: -16px;
     ${propToStyle('flex')}
+    ${propToStyle('marginTop')}
     ${propToStyle('marginLeft')}
     ${propToStyle('marginRight')}
     ${propToStyle('justifyContent')}
+    ${propToStyle('marginBottom')}
+    ${propToStyle('flexDirection')}
   `,
   Col,
 };

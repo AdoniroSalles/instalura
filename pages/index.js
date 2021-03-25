@@ -24,7 +24,6 @@ export default function Home() {
       backgroundRepeat="no-repeat"
       backgroundPosition="bottom right"
     >
-      <Menu />
 
       {/* {isModalOpen && <Modal />} */}
       <Modal
@@ -38,6 +37,10 @@ export default function Home() {
         )}
 
       </Modal>
+
+      <Menu
+        onCadastrarClick={() => setModalState(true)}
+      />
 
       <Grid.Container
         marginTop={{
