@@ -67,7 +67,7 @@ export default function Home() {
                 md: 'left',
               }}
             >
-              Compartilhe momentos e conecte-se com amigos
+              Compartilhe momentos e conecte-se com amigosss
             </Text>
             <Text
               variant="paragraph1"
