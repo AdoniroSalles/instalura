@@ -1,47 +1,20 @@
+/* eslint-disable import/named */
 /* eslint-disable react/react-in-jsx-scope */
 import React from 'react';
-import Footer from '../src/components/commons/Footer';
-import Menu from '../src/components/commons/Menu';
 import Text from '../src/components/foundation/Text';
 import { Button } from '../src/components/commons/Button';
 import { Grid } from '../src/components/foundation/layout/Grid';
+import WebsitePageWrapper, { WebSitePageContext } from '../src/components/wrappers/WebsitePage';
 import { Box } from '../src/components/foundation/layout/Box';
-import Modal from '../src/components/commons/Modal';
-import FormCadastro from '../src/components/patterns/FormCadastro';
 
-export default function Home() {
-  const [isModalOpen, setModalState] = React.useState(false); // renderiza o const
-
+function HomeScreen() {
+  const websitePageContext = React.useContext(WebSitePageContext);
   return (
-    // eslint-disable-next-line react/react-in-jsx-scope
     <Box
-      flex="1"
       display="flex"
-      flexWrap="wrap"
       flexDirection="column"
-      justifyContent="space-between"
-      backgroundImage="url(/images/bubbles.svg)"
-      backgroundRepeat="no-repeat"
-      backgroundPosition="bottom right"
+      flex="1"
     >
-
-      {/* {isModalOpen && <Modal />} */}
-      <Modal
-        isOpen={isModalOpen}
-        onClose={() => {
-          setModalState(false);
-        }}
-      >
-        {(propsDoModal) => (
-          <FormCadastro propsDoModal={propsDoModal} />
-        )}
-
-      </Modal>
-
-      <Menu
-        onCadastrarClick={() => setModalState(true)}
-      />
-
       <Grid.Container
         marginTop={{
           xs: '32px',
@@ -61,7 +34,7 @@ export default function Home() {
               variant="title"
               tag="h1"
               color="tertiary.main"
-              // textAlign = "center"
+          // textAlign = "center"
               textAlign={{
                 xs: 'center',
                 md: 'left',
@@ -92,7 +65,7 @@ export default function Home() {
               display="block"
               onClick={() => {
                 // isModalOpen = true;
-                setModalState(!isModalOpen); // altera a mudança de estado
+                websitePageContext.toggleModalCadastro();
               }}
             >
               Cadastrar
@@ -107,9 +80,28 @@ export default function Home() {
           </Grid.Col>
         </Grid.Row>
       </Grid.Container>
-
-      <Footer name="Adoniro Salles " />
     </Box>
+  );
+}
+
+export default function Home() {
+  return (
+    // eslint-disable-next-line react/react-in-jsx-scope
+    <WebsitePageWrapper
+      seoProps={{
+        headTitle: 'Home',
+      }}
+      pageBoxProps={{
+        backgroundImage: 'url(/images/bubbles.svg)',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'bottom right',
+      }}
+      menuProps={{
+        display: true,
+      }}
+    >
+      <HomeScreen />
+    </WebsitePageWrapper>
   );
   // <Title>My page</Title>
 }
