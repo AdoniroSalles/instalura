@@ -4,8 +4,9 @@ import React from 'react';
 import Text from '../src/components/foundation/Text';
 import { Button } from '../src/components/commons/Button';
 import { Grid } from '../src/components/foundation/layout/Grid';
-import WebsitePageWrapper, { WebSitePageContext } from '../src/components/wrappers/WebsitePage';
+import { WebSitePageContext } from '../src/components/wrappers/WebsitePage';
 import { Box } from '../src/components/foundation/layout/Box';
+import websitePageHOC from '../src/components/wrappers/WebsitePage/hoc';
 
 function HomeScreen() {
   const websitePageContext = React.useContext(WebSitePageContext);
@@ -84,24 +85,37 @@ function HomeScreen() {
   );
 }
 
-export default function Home() {
-  return (
-    // eslint-disable-next-line react/react-in-jsx-scope
-    <WebsitePageWrapper
-      seoProps={{
-        headTitle: 'Home',
-      }}
-      pageBoxProps={{
-        backgroundImage: 'url(/images/bubbles.svg)',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'bottom right',
-      }}
-      menuProps={{
-        display: true,
-      }}
-    >
-      <HomeScreen />
-    </WebsitePageWrapper>
-  );
-  // <Title>My page</Title>
-}
+export default websitePageHOC(HomeScreen, {
+  pageWrapperProps: {
+    seoProps: {
+      headTitle: 'Home',
+    },
+    pageBoxProps: {
+      backgroundImage: 'url(/images/bubbles.svg)',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'bottom right',
+    },
+  },
+});
+
+// export default function Home() {
+//   return (
+//     // eslint-disable-next-line react/react-in-jsx-scope
+//     <WebsitePageWrapper
+//       seoProps={{
+//         headTitle: 'Home',
+//       }}
+//       pageBoxProps={{
+//         backgroundImage: 'url(/images/bubbles.svg)',
+//         backgroundRepeat: 'no-repeat',
+//         backgroundPosition: 'bottom right',
+//       }}
+//       menuProps={{
+//         display: true,
+//       }}
+//     >
+//       <HomeScreen />
+//     </WebsitePageWrapper>
+//   );
+//   // <Title>My page</Title>
+// }
