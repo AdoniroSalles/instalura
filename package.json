@@ -7,10 +7,14 @@
     "export": "next build && next export",
     "start": "next start",
     "lint": "eslint --ignore-path .gitignore .",
-    "commit": "cz"
+    "commit": "cz",
+    "test:integration:open" : "cypress open"
+
   },
   "dependencies": {
     "@crello/react-lottie": "0.0.11",
+    "cypress": "^7.0.1",
+    "eslint-plugin-cypress": "^2.11.2",
     "framer-motion": "^3.10.0",
     "husky": "^5.1.3",
     "lodash": "^4.17.20",
